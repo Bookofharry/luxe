@@ -14,11 +14,19 @@ function payWithPaystack() {
         return;
     }
 
+    let phone = document.getElementById("customer-phone")?.value.trim();
+    let ngPhoneRegex = /^(\+234|0)[789][01]\d{8}$/;
+    
+    if(!phone || !ngPhoneRegex.test(phone)) {
+        alert("Please enter a valid Nigerian phone number (e.g. 08012345678)");
+        return;
+    }
+
     let total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
     total = total - (total * discount);
 
     // Mock Paystack behavior since no key is provided
-    let confirmPayment = confirm(`MOCK CHECKOUT\n\nTotal: ₦${total.toLocaleString()}\nEmail: ${email}\n\nProceed to simulate successful payment?`);
+    let confirmPayment = confirm(`MOCK CHECKOUT\n\nTotal: ₦${total.toLocaleString()}\nEmail: ${email}\nPhone: ${phone}\n\nProceed to simulate successful payment?`);
 
     if(confirmPayment) {
         // Success Mock
@@ -29,6 +37,7 @@ function payWithPaystack() {
             status: "Paid",
             total: total,
             date: new Date().toLocaleDateString(),
+            phone: phone,
             items: [...cart]
         };
 

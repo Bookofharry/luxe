@@ -60,11 +60,19 @@ function sendWhatsAppOrder(){
 
     }
 
+    let phone = document.getElementById("customer-phone")?.value.trim();
+    let ngPhoneRegex = /^(\+234|0)[789][01]\d{8}$/;
+    
+    if(!phone || !ngPhoneRegex.test(phone)) {
+        alert("Please enter a valid Nigerian phone number (e.g. 08012345678)");
+        return;
+    }
+
     const orderNumber =
     generateOrderNumber();
 
     let message =
-`🛍️ *NEW JEWELRY ORDER*
+`*NEW JEWELRY ORDER*
 
 Order Number: ${orderNumber}
 
@@ -77,7 +85,7 @@ Order Number: ${orderNumber}
 
         message +=
 
-`💎 ${item.name}
+`- ${item.name}
 Qty: ${item.qty}
 Price: ₦${formatMoney(item.price)}
 Subtotal: ₦${formatMoney(subtotal)}
@@ -92,6 +100,9 @@ TOTAL: ₦${formatMoney(getWhatsAppTotal())}
 
 Customer Email:
 ${document.getElementById("customer-email")?.value || "Not Provided"}
+
+Customer Phone:
+${phone}
 
 Thank you.
 `;

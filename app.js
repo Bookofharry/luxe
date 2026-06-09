@@ -111,7 +111,9 @@ filtered.forEach(product => {
 
 grid.innerHTML += `
 <div class="product-card">
+<div class="product-img-wrapper">
 <img src="${product.image}" onclick="openProductModal(${product.id})" style="cursor:pointer;">
+</div>
 <div class="product-info">
 <h3 class="product-name" onclick="openProductModal(${product.id})" style="cursor:pointer;">
 ${product.name}
@@ -119,17 +121,9 @@ ${product.name}
 <div class="product-price">
 ₦${product.price.toLocaleString()}
 </div>
-<p class="stock">
-Stock: ${product.stock}
-</p>
-<div class="qty-controls">
-<button onclick="decreaseQtyInput(${product.id})">-</button>
-<span id="qty-${product.id}">1</span>
-<button onclick="increaseQtyInput(${product.id})">+</button>
-</div>
 <div class="product-buttons">
-<button class="add-cart" onclick="addToCart(${product.id})">Add to Cart</button>
-<button class="wishlist-btn" onclick="addToWishlist(${product.id})">❤</button>
+<button class="add-cart" onclick="addToCart(${product.id})">ADD TO BAG</button>
+<button class="wishlist-btn" onclick="addToWishlist(${product.id})"><i class="ph ph-heart"></i></button>
 </div>
 </div>
 </div>
@@ -175,7 +169,8 @@ function toggleCart() {
 
 function addToCart(id) {
     let product = products.find(p => p.id === id);
-    let qty = parseInt(document.getElementById(`qty-${id}`)?.innerText || 1);
+    let qtyEl = document.getElementById(`qty-${id}`);
+    let qty = qtyEl ? parseInt(qtyEl.innerText) : 1;
     
     let existing = cart.find(item => item.id === id);
     if(existing) {
@@ -215,16 +210,19 @@ function renderCart() {
         subtotal += item.price * item.qty;
         container.innerHTML += `
         <div class="cart-item">
-            <div>
+            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+            <div class="cart-item-details">
                 <h4>${item.name}</h4>
                 <p>₦${item.price.toLocaleString()}</p>
-                <div class="qty-controls" style="margin-top: 5px;">
-                    <button onclick="decreaseCartQty(${item.id})">-</button>
-                    <span>${item.qty}</span>
-                    <button onclick="increaseCartQty(${item.id})">+</button>
+                <div class="cart-qty-row">
+                    <div class="qty-controls cart-qty">
+                        <button onclick="decreaseCartQty(${item.id})">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="increaseCartQty(${item.id})">+</button>
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})"><i class="ph ph-trash"></i></button>
                 </div>
             </div>
-            <button onclick="removeFromCart(${item.id})">Remove</button>
         </div>
         `;
     });
@@ -232,9 +230,9 @@ function renderCart() {
     let finalTotal = subtotal - (subtotal * discount);
     
     if (discount > 0) {
-        totalEl.innerHTML = `<del>₦${subtotal.toLocaleString()}</del> ₦${finalTotal.toLocaleString()}`;
+        totalEl.innerHTML = `<del style="color:#888; font-size:14px; margin-right:5px;">₦${subtotal.toLocaleString()}</del> ₦${finalTotal.toLocaleString()}`;
     } else {
-        totalEl.innerText = subtotal.toLocaleString();
+        totalEl.innerText = `₦${subtotal.toLocaleString()}`;
     }
 }
 

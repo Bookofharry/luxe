@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 </head>
 
@@ -19,7 +20,7 @@
 <!-- TOP BAR -->
 
 <div class="top-bar">
-🚚 FREE SHIPPING ON ORDERS ABOVE ₦100,000
+<i class="ph ph-truck" style="margin-right: 5px; font-size: 16px;"></i> FREE SHIPPING ON ORDERS ABOVE ₦100,000
 </div>
 
 <!-- NAVIGATION -->
@@ -27,6 +28,10 @@
 <header>
 
 <nav>
+
+<button class="hamburger-btn" onclick="toggleMenu()">
+<i class="ph ph-list" style="font-size: 24px;"></i>
+</button>
 
 <div class="logo">
 LUXE
@@ -50,21 +55,17 @@ LUXE
 
 <div class="nav-icons">
 
-<button class="hamburger-btn" onclick="toggleMenu()">
-☰
-</button>
-
 <input
 type="text"
 id="search"
 placeholder="Search products">
 
 <button onclick="toggleWishlist()">
-❤
+<i class="ph ph-heart" style="font-size: 20px;"></i>
 </button>
 
 <button onclick="toggleCart()">
-🛒
+<i class="ph ph-shopping-bag" style="font-size: 20px;"></i>
 <span id="cart-count">0</span>
 </button>
 
@@ -175,7 +176,7 @@ Featured Jewelry
 <h3>Your Cart</h3>
 
 <button onclick="toggleCart()">
-✕
+<i class="ph ph-x" style="font-size: 20px;"></i>
 </button>
 
 </div>
@@ -184,34 +185,28 @@ Featured Jewelry
 
 <div class="cart-summary">
 
-<p>
-Subtotal:
-₦<span id="cart-total">0</span>
-</p>
+    <div class="cart-subtotal">
+        <span>Subtotal:</span>
+        <span id="cart-total">₦0</span>
+    </div>
 
-<input
-type="text"
-id="coupon"
-placeholder="Discount Code">
+    <div class="coupon-row">
+        <input type="text" id="coupon" placeholder="Discount Code">
+        <button onclick="applyCoupon()">Apply</button>
+    </div>
 
-<button onclick="applyCoupon()">
-Apply Coupon
-</button>
+    <div class="customer-inputs">
+        <input type="email" id="customer-email" placeholder="Email Address">
+        <input type="tel" id="customer-phone" placeholder="Phone (e.g. 080...)">
+    </div>
 
-<input
-type="email"
-id="customer-email"
-placeholder="Email Address">
+    <button onclick="payWithPaystack()" class="checkout-btn">
+        Checkout With Paystack
+    </button>
 
-<button onclick="payWithPaystack()"
-class="checkout-btn">
-Checkout With Paystack
-</button>
-
-<button onclick="sendWhatsAppOrder()"
-class="whatsapp-btn">
-Order On WhatsApp
-</button>
+    <button onclick="sendWhatsAppOrder()" class="whatsapp-btn">
+        Order On WhatsApp
+    </button>
 
 </div>
 
@@ -226,7 +221,7 @@ Order On WhatsApp
 <h3>Wishlist</h3>
 
 <button onclick="toggleWishlist()">
-✕
+<i class="ph ph-x" style="font-size: 20px;"></i>
 </button>
 
 </div>
@@ -262,7 +257,9 @@ Customer Reviews
 <div id="reviews-container">
 
 <div class="review">
-    <div class="review-stars">★★★★★</div>
+    <div class="review-stars">
+        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+    </div>
     <p class="review-text">"Amazing quality. The diamond necklace I bought looks absolutely stunning and arrived in perfect condition."</p>
     <div class="reviewer-info">
         <div class="reviewer-avatar">S</div>
@@ -271,7 +268,9 @@ Customer Reviews
 </div>
 
 <div class="review">
-    <div class="review-stars">★★★★★</div>
+    <div class="review-stars">
+        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+    </div>
     <p class="review-text">"Fast delivery and incredible customer service. The packaging alone feels like a luxury experience!"</p>
     <div class="reviewer-info">
         <div class="reviewer-avatar">M</div>
@@ -280,7 +279,9 @@ Customer Reviews
 </div>
 
 <div class="review">
-    <div class="review-stars">★★★★★</div>
+    <div class="review-stars">
+        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
+    </div>
     <p class="review-text">"Beautiful pieces. I purchased a gold bracelet for my wife's anniversary and she hasn't taken it off since."</p>
     <div class="reviewer-info">
         <div class="reviewer-avatar">E</div>
@@ -316,7 +317,7 @@ WhatsApp:
 <!-- PRODUCT MODAL -->
 <div id="product-modal" class="modal">
 <div class="modal-content">
-<span class="close-modal" onclick="closeProductModal()">✕</span>
+<span class="close-modal" onclick="closeProductModal()"><i class="ph ph-x" style="font-size: 24px;"></i></span>
 <div class="modal-body">
 <div class="modal-image">
 <img id="modal-img" src="" alt="Product Image">
@@ -333,8 +334,8 @@ WhatsApp:
 </div>
 
 <!-- FLOATING WHATSAPP -->
-<a href="javascript:void(0)" class="floating-whatsapp" onclick="sendWhatsAppOrder()">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<a href="https://wa.me/2348154783517" target="_blank" class="floating-whatsapp">
+<i class="ph ph-whatsapp-logo" style="font-size: 35px; color: white;"></i>
 </a>
 
 <script src="paystack.js"></script>
