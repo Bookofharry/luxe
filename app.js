@@ -175,7 +175,7 @@ function addToCart(id) {
     let existing = cart.find(item => item.id === id);
     if(existing) {
         if(existing.qty + qty > product.stock) {
-            alert("Cannot add more than stock");
+            showNotification("Cannot add more than stock", "Stock Limit", "error");
             return;
         }
         existing.qty += qty;
@@ -261,10 +261,10 @@ function applyCoupon() {
     let code = document.getElementById("coupon").value.trim().toUpperCase();
     if (code === "DISCOUNT10") {
         discount = 0.10; // 10% discount
-        alert("10% Discount Applied!");
+        showNotification("10% Discount Applied!", "Success", "success");
     } else {
         discount = 0;
-        alert("Invalid coupon code");
+        showNotification("Invalid coupon code", "Error", "error");
     }
     renderCart();
 }
@@ -290,9 +290,9 @@ function addToWishlist(id) {
     if(!wishlist.find(item => item.id === id)) {
         wishlist.push(product);
         saveWishlist();
-        alert(`${product.name} added to wishlist!`);
+        showNotification(`${product.name} added to wishlist!`, "Wishlist", "success");
     } else {
-        alert("Already in wishlist");
+        showNotification("Already in wishlist", "Notice", "info");
     }
 }
 
@@ -347,6 +347,54 @@ function openProductModal(id) {
 
 function closeProductModal() {
     document.getElementById("product-modal").classList.remove("active");
+}
+
+function showNotification(message, title = "Notice", type = "info") {
+    document.getElementById("notification-message").innerText = message;
+    document.getElementById("notification-title").innerText = title;
+    
+    let icon = document.getElementById("notification-icon");
+    if(type === "success") {
+        icon.className = "ph-fill ph-check-circle";
+        icon.style.color = "#d4af37"; 
+    } else if (type === "error") {
+        icon.className = "ph-fill ph-warning-circle";
+        icon.style.color = "#ff4b4b";
+    } else {
+        icon.className = "ph-fill ph-info";
+        icon.style.color = "#d4af37";
+    }
+    
+    let btnContainer = document.getElementById("notification-btn-container");
+    btnContainer.innerHTML = `<button class="gold-btn" onclick="closeNotification()" style="width: 100%;">OK</button>`;
+    
+    document.getElementById("notification-modal").classList.add("active");
+}
+
+function showConfirm(message, title, onConfirm) {
+    document.getElementById("notification-message").innerText = message;
+    document.getElementById("notification-title").innerText = title;
+    
+    let icon = document.getElementById("notification-icon");
+    icon.className = "ph-fill ph-question";
+    icon.style.color = "#d4af37";
+    
+    let btnContainer = document.getElementById("notification-btn-container");
+    btnContainer.innerHTML = `
+        <button class="outline-btn" onclick="closeNotification()" style="flex:1;">Cancel</button>
+        <button class="gold-btn" id="confirm-yes-btn" style="flex:1;">Yes</button>
+    `;
+    
+    document.getElementById("confirm-yes-btn").onclick = () => {
+        closeNotification();
+        if(onConfirm) onConfirm();
+    };
+    
+    document.getElementById("notification-modal").classList.add("active");
+}
+
+function closeNotification() {
+    document.getElementById("notification-modal").classList.remove("active");
 }
 
 // =========================

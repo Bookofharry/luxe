@@ -840,6 +840,18 @@ line-height:1.6;
 color:#ccc;
 }
 
+.notification-content {
+    max-width: 400px;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.notification-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* FLOATING WHATSAPP */
 
 .floating-whatsapp{

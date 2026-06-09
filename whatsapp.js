@@ -53,18 +53,15 @@ function generateOrderNumber(){
 function sendWhatsAppOrder(){
 
     if(cart.length === 0){
-
-        alert("Your cart is empty");
-
+        showNotification("Your cart is empty", "Error", "error");
         return;
-
     }
 
     let phone = document.getElementById("customer-phone")?.value.trim();
     let ngPhoneRegex = /^(\+234|0)[789][01]\d{8}$/;
     
     if(!phone || !ngPhoneRegex.test(phone)) {
-        alert("Please enter a valid Nigerian phone number (e.g. 08012345678)");
+        showNotification("Please enter a valid Nigerian phone number (e.g. 08012345678)", "Missing Info", "error");
         return;
     }
 

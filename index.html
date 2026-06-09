@@ -366,6 +366,21 @@ Customer Reviews
 </div>
 </div>
 
+<!-- CUSTOM NOTIFICATION MODAL -->
+<div id="notification-modal" class="modal">
+    <div class="modal-content notification-content">
+        <span class="close-modal" onclick="closeNotification()"><i class="ph ph-x" style="font-size: 24px;"></i></span>
+        <div class="notification-body">
+            <i class="ph ph-info" id="notification-icon" style="font-size: 50px; color: #d4af37; margin-bottom: 20px;"></i>
+            <h3 id="notification-title" style="font-family:'Cormorant Garamond',serif; font-size: 32px; color: #d4af37; margin-bottom: 10px;">Notice</h3>
+            <p id="notification-message" style="color: #ccc; margin-bottom: 30px; font-size: 16px; white-space: pre-wrap;"></p>
+            <div id="notification-btn-container" style="display:flex; gap:15px; width:100%;">
+                <button class="gold-btn" onclick="closeNotification()" style="width: 100%;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/2348154783517" target="_blank" class="floating-whatsapp">
 <i class="ph ph-whatsapp-logo" style="font-size: 35px; color: white;"></i>

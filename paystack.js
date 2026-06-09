@@ -4,13 +4,13 @@
 
 function payWithPaystack() {
     if(cart.length === 0) {
-        alert("Your cart is empty");
+        showNotification("Your cart is empty", "Error", "error");
         return;
     }
 
     let email = document.getElementById("customer-email").value;
     if(!email) {
-        alert("Please enter your email address");
+        showNotification("Please enter your email address", "Missing Info", "error");
         return;
     }
 
@@ -18,7 +18,7 @@ function payWithPaystack() {
     let ngPhoneRegex = /^(\+234|0)[789][01]\d{8}$/;
     
     if(!phone || !ngPhoneRegex.test(phone)) {
-        alert("Please enter a valid Nigerian phone number (e.g. 08012345678)");
+        showNotification("Please enter a valid Nigerian phone number (e.g. 08012345678)", "Missing Info", "error");
         return;
     }
 
@@ -26,11 +26,9 @@ function payWithPaystack() {
     total = total - (total * discount);
 
     // Mock Paystack behavior since no key is provided
-    let confirmPayment = confirm(`MOCK CHECKOUT\n\nTotal: ₦${total.toLocaleString()}\nEmail: ${email}\nPhone: ${phone}\n\nProceed to simulate successful payment?`);
-
-    if(confirmPayment) {
+    showConfirm(`MOCK CHECKOUT\n\nTotal: ₦${total.toLocaleString()}\nEmail: ${email}\nPhone: ${phone}\n\nProceed to simulate successful payment?`, "Confirm Payment", () => {
         // Success Mock
-        alert("Payment successful! Reference: MOCK-" + Date.now());
+        showNotification("Payment successful! Reference: MOCK-" + Date.now(), "Order Confirmed", "success");
         
         let order = {
             reference: "MOCK-" + Date.now(),
@@ -57,7 +55,7 @@ function payWithPaystack() {
         
         // Refresh Order History if on page
         renderOrderHistory();
-    }
+    });
 }
 
 function renderOrderHistory() {
