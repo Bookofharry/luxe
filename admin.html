@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:#0b0b0b;
+font-family:Poppins,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.login-box{
+width:400px;
+background:#151515;
+padding:40px;
+border-radius:10px;
+}
+
+h1{
+font-family:'Cormorant Garamond',serif;
+color:#d4af37;
+text-align:center;
+margin-bottom:25px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+background:#222;
+border:none;
+color:white;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+font-weight:bold;
+}
+
+.error{
+color:#ff4b4b;
+margin-top:10px;
+text-align:center;
+}
+
+</style>
+</head>
+<body>
+
+<div class="login-box">
+
+<h1>Admin Login</h1>
+
+<input
+type="text"
+id="username"
+placeholder="Username">
+
+<input
+type="password"
+id="password"
+placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+<p id="error" class="error"></p>
+
+</div>
+
+<script>
+
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "LuxeAdmin2025";
+
+function login(){
+
+let username =
+document.getElementById("username").value;
+
+let password =
+document.getElementById("password").value;
+
+if(
+username === ADMIN_USER &&
+password === ADMIN_PASS
+){
+
+localStorage.setItem(
+"adminLoggedIn",
+"true"
+);
+
+window.location.href =
+"admin-dashboard.html";
+
+}else{
+
+document.getElementById("error")
+.innerText =
+"Invalid Login";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

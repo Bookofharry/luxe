@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LUXE Jewelry</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+🚚 FREE SHIPPING ON ORDERS ABOVE ₦100,000
+</div>
+
+<!-- NAVIGATION -->
+
+<header>
+
+<nav>
+
+<div class="logo">
+LUXE
+</div>
+
+<ul id="nav-menu">
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#products">Shop</a></li>
+
+<li><a href="#products">Collections</a></li>
+
+<li><a href="#products">New Arrivals</a></li>
+
+<li><a href="#about">About</a></li>
+
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="nav-icons">
+
+<button class="hamburger-btn" onclick="toggleMenu()">
+☰
+</button>
+
+<input
+type="text"
+id="search"
+placeholder="Search products">
+
+<button onclick="toggleWishlist()">
+❤
+</button>
+
+<button onclick="toggleCart()">
+🛒
+<span id="cart-count">0</span>
+</button>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-content">
+
+<p class="tagline">
+TIMELESS BEAUTY
+</p>
+
+<h1>
+Elegance That
+<br>
+Shines Forever
+</h1>
+
+<p>
+Discover handcrafted jewelry and luxury accessories designed to make every moment unforgettable.
+</p>
+
+<div class="hero-buttons">
+
+<button class="gold-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+SHOP NOW
+</button>
+
+<button class="outline-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
+EXPLORE COLLECTION
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features" id="about">
+
+<div class="feature">
+
+<h3>Premium Quality</h3>
+
+<p>Finest craftsmanship and materials.</p>
+
+</div>
+
+<div class="feature">
+
+<h3>Lifetime Warranty</h3>
+
+<p>Protection on selected products.</p>
+
+</div>
+
+<div class="feature">
+
+<h3>Exclusive Packaging</h3>
+
+<p>Luxury gift-ready packaging.</p>
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section id="products">
+
+<h2>
+Featured Jewelry
+</h2>
+
+<div class="category-filters">
+<button class="filter-btn active" onclick="filterCategory(event, 'All')">All</button>
+<button class="filter-btn" onclick="filterCategory(event, 'Necklaces')">Necklaces</button>
+<button class="filter-btn" onclick="filterCategory(event, 'Earrings')">Earrings</button>
+<button class="filter-btn" onclick="filterCategory(event, 'Bracelets')">Bracelets</button>
+<button class="filter-btn" onclick="filterCategory(event, 'Rings')">Rings</button>
+</div>
+
+<div id="product-grid">
+
+<!-- JS WILL LOAD PRODUCTS -->
+
+</div>
+
+</section>
+
+<!-- CART -->
+
+<div id="cart-sidebar">
+
+<div class="cart-header">
+
+<h3>Your Cart</h3>
+
+<button onclick="toggleCart()">
+✕
+</button>
+
+</div>
+
+<div id="cart-items"></div>
+
+<div class="cart-summary">
+
+<p>
+Subtotal:
+₦<span id="cart-total">0</span>
+</p>
+
+<input
+type="text"
+id="coupon"
+placeholder="Discount Code">
+
+<button onclick="applyCoupon()">
+Apply Coupon
+</button>
+
+<input
+type="email"
+id="customer-email"
+placeholder="Email Address">
+
+<button onclick="payWithPaystack()"
+class="checkout-btn">
+Checkout With Paystack
+</button>
+
+<button onclick="sendWhatsAppOrder()"
+class="whatsapp-btn">
+Order On WhatsApp
+</button>
+
+</div>
+
+</div>
+
+<!-- WISHLIST -->
+
+<div id="wishlist-sidebar">
+
+<div class="cart-header">
+
+<h3>Wishlist</h3>
+
+<button onclick="toggleWishlist()">
+✕
+</button>
+
+</div>
+
+<div id="wishlist-items">
+
+</div>
+
+</div>
+
+<!-- ORDER HISTORY -->
+
+<section class="history">
+
+<h2>
+Order History
+</h2>
+
+<div id="order-history">
+
+</div>
+
+</section>
+
+<!-- REVIEWS -->
+
+<section class="reviews">
+
+<h2>
+Customer Reviews
+</h2>
+
+<div id="reviews-container">
+
+<div class="review">
+    <div class="review-stars">★★★★★</div>
+    <p class="review-text">"Amazing quality. The diamond necklace I bought looks absolutely stunning and arrived in perfect condition."</p>
+    <div class="reviewer-info">
+        <div class="reviewer-avatar">S</div>
+        <span class="reviewer-name">Sarah Jenkins</span>
+    </div>
+</div>
+
+<div class="review">
+    <div class="review-stars">★★★★★</div>
+    <p class="review-text">"Fast delivery and incredible customer service. The packaging alone feels like a luxury experience!"</p>
+    <div class="reviewer-info">
+        <div class="reviewer-avatar">M</div>
+        <span class="reviewer-name">Michael D.</span>
+    </div>
+</div>
+
+<div class="review">
+    <div class="review-stars">★★★★★</div>
+    <p class="review-text">"Beautiful pieces. I purchased a gold bracelet for my wife's anniversary and she hasn't taken it off since."</p>
+    <div class="reviewer-info">
+        <div class="reviewer-avatar">E</div>
+        <span class="reviewer-name">Emily R.</span>
+    </div>
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+<div class="footer-content">
+
+<h2>LUXE</h2>
+
+<p>
+Luxury Jewelry & Accessories
+</p>
+
+<p>
+WhatsApp:
++234 815 478 3517
+</p>
+
+</div>
+
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div id="product-modal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeProductModal()">✕</span>
+<div class="modal-body">
+<div class="modal-image">
+<img id="modal-img" src="" alt="Product Image">
+</div>
+<div class="modal-details">
+<h2 id="modal-name"></h2>
+<p id="modal-price" class="product-price"></p>
+<p id="modal-desc"></p>
+<p id="modal-stock" class="stock"></p>
+<button id="modal-add-btn" class="gold-btn">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="javascript:void(0)" class="floating-whatsapp" onclick="sendWhatsAppOrder()">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
+
+<script src="paystack.js"></script>
+<script src="whatsapp.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
