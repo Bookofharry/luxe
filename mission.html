@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+<title>Mission & Goals - Amalouelle Jewelry</title>
+<meta name="description" content="Discover handcrafted luxury jewelry and accessories at Amalouelle. Elegance that shines forever.">
+<meta property="og:title" content="Amalouelle Jewelry">
+<meta property="og:description" content="Discover handcrafted luxury jewelry and accessories.">
+<meta property="og:image" content="https://yourdomain.com/assets/hero.jpg">
+<meta property="og:type" content="website">
+
+<!-- Basic Content Security Policy to prevent unauthorized scripts -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https: 'unsafe-inline' 'unsafe-eval';">
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://js.paystack.co/v1/inline.js" defer></script>
+<script src="https://unpkg.com/@phosphor-icons/web" defer></script>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+<i class="ph ph-truck" style="margin-right: 5px; font-size: 16px;"></i> FREE SHIPPING ON ORDERS ABOVE ₦100,000
+</div>
+
+<!-- NAVIGATION -->
+
+<header>
+
+<nav>
+
+<button class="hamburger-btn" onclick="toggleMenu()">
+<i class="ph ph-list" style="font-size: 24px;"></i>
+</button>
+
+<div class="logo">
+Amalouelle
+</div>
+
+<ul id="nav-menu">
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="shop.html">Shop</a></li>
+
+<li><a href="new-arrivals.html">New Arrivals</a></li>
+
+<li><a href="orders.html">Orders</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+<div class="nav-icons">
+
+<input
+type="text"
+id="search"
+placeholder="Search products">
+
+<button onclick="toggleWishlist()">
+<i class="ph ph-heart" style="font-size: 20px;"></i>
+</button>
+
+<button onclick="toggleCart()">
+<i class="ph ph-shopping-bag" style="font-size: 20px;"></i>
+<span id="cart-count">0</span>
+</button>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- MISSION HERO -->
+<section class="mission-hero" style="position: relative; width: 100%; min-height: 50vh; display: flex; align-items: center; justify-content: center; padding: 120px 8%; background: url('assets/hero.jpg') center/cover no-repeat; background-attachment: fixed;">
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1;"></div>
+    <div style="position: relative; z-index: 2; text-align: center;">
+        <p style="color: #d4af37; letter-spacing: 3px; font-weight: 600; font-size: 14px; margin-bottom: 15px; text-transform: uppercase;">Our Purpose</p>
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 60px; color: #d4af37; letter-spacing: 1px;">Mission & Goals</h1>
+    </div>
+</section>
+
+<!-- CONTENT SECTION -->
+<section style="padding: 100px 8%; background: #0b0b0b; display: flex; flex-direction: column; gap: 80px; align-items: center;">
+
+    <!-- MISSION -->
+    <div style="max-width: 900px; width: 100%; text-align: center;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #d4af37; margin-bottom: 30px;">Our Mission</h2>
+        <p style="color: #ccc; font-size: 18px; line-height: 1.9; margin-bottom: 25px;">
+            At Amalouelle Jewelry & Accessories, our mission is to provide timeless, elegant, and high-quality jewelry and accessories that inspire confidence, celebrate individuality, and create lasting memories. We are committed to delivering exceptional products, outstanding customer service, and a seamless shopping experience built on trust, reliability, and customer satisfaction.
+        </p>
+        <p style="color: #ccc; font-size: 18px; line-height: 1.9;">
+            Through innovation, attention to detail, and a deep understanding of our customers' needs, we strive to make luxury and style accessible while maintaining the highest standards of quality and professionalism.
+        </p>
+    </div>
+
+    <!-- GOAL -->
+    <div style="max-width: 900px; width: 100%; background: #111; padding: 50px; border: 1px solid #222; border-radius: 4px;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #d4af37; margin-bottom: 30px; text-align: center;">Our Goal</h2>
+        <p style="color: #ccc; font-size: 18px; line-height: 1.9; margin-bottom: 30px; text-align: center;">
+            Our goal is to become one of the most trusted and respected jewelry and accessories brands by consistently delivering quality products, exceptional value, and remarkable customer experiences.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 40px; text-align: left;">
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <i class="ph ph-handshake" style="color: #d4af37; font-size: 28px; flex-shrink: 0;"></i>
+                <p style="color: #ccc; font-size: 16px; line-height: 1.6; margin: 0;">Build long-lasting relationships with our customers.</p>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <i class="ph ph-sparkle" style="color: #d4af37; font-size: 28px; flex-shrink: 0;"></i>
+                <p style="color: #ccc; font-size: 16px; line-height: 1.6; margin: 0;">Continuously expand our collection with fashionable and timeless pieces.</p>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <i class="ph ph-medal" style="color: #d4af37; font-size: 28px; flex-shrink: 0;"></i>
+                <p style="color: #ccc; font-size: 16px; line-height: 1.6; margin: 0;">Maintain excellence in product quality and service delivery.</p>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <i class="ph ph-shopping-bag" style="color: #d4af37; font-size: 28px; flex-shrink: 0;"></i>
+                <p style="color: #ccc; font-size: 16px; line-height: 1.6; margin: 0;">Create a seamless and enjoyable shopping experience across all platforms.</p>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <i class="ph ph-globe-hemisphere-west" style="color: #d4af37; font-size: 28px; flex-shrink: 0;"></i>
+                <p style="color: #ccc; font-size: 16px; line-height: 1.6; margin: 0;">Become the preferred destination for jewelry and accessories locally and internationally.</p>
+            </div>
+            <div style="display: flex; gap: 15px; align-items: flex-start;">
+                <i class="ph ph-heart" style="color: #d4af37; font-size: 28px; flex-shrink: 0;"></i>
+                <p style="color: #ccc; font-size: 16px; line-height: 1.6; margin: 0;">Foster a brand culture centered on trust, elegance, innovation, and customer satisfaction.</p>
+            </div>
+        </div>
+        
+        <p style="color: #ccc; font-size: 18px; line-height: 1.9; margin: 0; text-align: center; font-style: italic;">
+            "As we grow, our goal remains to exceed customer expectations, adapt to changing trends, and continue providing products and services that bring beauty, confidence, and value to the lives of our customers."
+        </p>
+    </div>
+
+    <!-- CORE VALUES -->
+    <div style="max-width: 900px; width: 100%; text-align: center;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #d4af37; margin-bottom: 50px;">Our Core Values</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px;">
+            <div>
+                <i class="ph ph-diamond" style="color: #d4af37; font-size: 40px; margin-bottom: 15px;"></i>
+                <h3 style="color: white; font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 10px;">Excellence</h3>
+                <p style="color: #888; font-size: 15px; line-height: 1.6;">We demand uncompromising quality in every piece we craft.</p>
+            </div>
+            <div>
+                <i class="ph ph-shield-check" style="color: #d4af37; font-size: 40px; margin-bottom: 15px;"></i>
+                <h3 style="color: white; font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 10px;">Integrity</h3>
+                <p style="color: #888; font-size: 15px; line-height: 1.6;">Transparency and trust are the foundations of our business.</p>
+            </div>
+            <div>
+                <i class="ph ph-star" style="color: #d4af37; font-size: 40px; margin-bottom: 15px;"></i>
+                <h3 style="color: white; font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 10px;">Innovation</h3>
+                <p style="color: #888; font-size: 15px; line-height: 1.6;">Evolving with trends while preserving our timeless heritage.</p>
+            </div>
+            <div>
+                <i class="ph ph-users" style="color: #d4af37; font-size: 40px; margin-bottom: 15px;"></i>
+                <h3 style="color: white; font-family: 'Cormorant Garamond', serif; font-size: 24px; margin-bottom: 10px;">Customer First</h3>
+                <p style="color: #888; font-size: 15px; line-height: 1.6;">Your satisfaction and joy dictate every decision we make.</p>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- PRODUCTS AND REVIEWS MOVED -->
+
+<!-- FOOTER -->
+
+<footer id="contact">
+    <div class="footer-newsletter">
+        <h3>Join the Amalouelle List</h3>
+        <p>Subscribe to receive updates, access to exclusive deals, and more.</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email address">
+            <button>SUBSCRIBE</button>
+        </div>
+    </div>
+
+    <div class="footer-grid">
+        <div class="footer-col brand-col">
+            <h2>Amalouelle</h2>
+            <p>Elegance that shines forever. Discover handcrafted luxury jewelry and accessories designed for eternity.</p>
+            <div class="social-links">
+                <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph ph-facebook-logo"></i></a>
+                <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                <a href="#"><i class="ph ph-pinterest-logo"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Customer Care</h4>
+            <ul>
+                <li><a href="https://wa.me/2348154783517" target="_blank">Contact on WhatsApp</a></li>
+                <li><a href="#">Shipping & Returns</a></li>
+                <li><a href="#">Size Guide</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Our Company</h4>
+            <ul>
+                <li><a href="#">About Amalouelle</a></li>
+                <li><a href="mission.html">Our Mission & Goals</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Amalouelle Jewelry. All rights reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+        </div>
+    </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div id="product-modal" class="modal">
+<div class="modal-content">
+<span class="close-modal" onclick="closeProductModal()"><i class="ph ph-x" style="font-size: 24px;"></i></span>
+<div class="modal-body">
+<div class="modal-image">
+<img id="modal-img" src="" alt="Product Image">
+</div>
+<div class="modal-details">
+<h2 id="modal-name"></h2>
+<p id="modal-price" class="product-price"></p>
+<p id="modal-desc"></p>
+<p id="modal-stock" class="stock"></p>
+<button id="modal-add-btn" class="gold-btn">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- CUSTOM NOTIFICATION MODAL -->
+<div id="notification-modal" class="modal">
+    <div class="modal-content notification-content">
+        <span class="close-modal" onclick="closeNotification()"><i class="ph ph-x" style="font-size: 24px;"></i></span>
+        <div class="notification-body">
+            <i class="ph ph-info" id="notification-icon" style="font-size: 50px; color: #d4af37; margin-bottom: 20px;"></i>
+            <h3 id="notification-title" style="font-family:'Cormorant Garamond',serif; font-size: 32px; color: #d4af37; margin-bottom: 10px;">Notice</h3>
+            <p id="notification-message" style="color: #ccc; margin-bottom: 30px; font-size: 16px; white-space: pre-wrap;"></p>
+            <div id="notification-btn-container" style="display:flex; gap:15px; width:100%;">
+                <button class="gold-btn" onclick="closeNotification()" style="width: 100%;">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/2348154783517" target="_blank" class="floating-whatsapp">
+<i class="ph ph-whatsapp-logo" style="font-size: 35px; color: white;"></i>
+</a>
+
+<script src="paystack.js"></script>
+<script src="whatsapp.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
