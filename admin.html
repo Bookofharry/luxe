@@ -92,7 +92,9 @@ Login
 <script>
 
 const ADMIN_USER = "admin";
-const ADMIN_PASS = "AmalouelleAdmin2025";
+// Obfuscated password for prototype (Base64 of AmalouelleAdmin2025). 
+// TODO: Move authentication to a secure backend endpoint.
+const ADMIN_PASS_HASH = "QW1hbG91ZWxsZUFkbWluMjAyNQ==";
 
 function login(){
 
@@ -104,7 +106,7 @@ document.getElementById("password").value;
 
 if(
 username === ADMIN_USER &&
-password === ADMIN_PASS
+btoa(password) === ADMIN_PASS_HASH
 ){
 
 localStorage.setItem(

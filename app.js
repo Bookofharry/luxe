@@ -2,7 +2,28 @@
 // PRODUCT DATABASE
 // =========================
 
-let products = JSON.parse(localStorage.getItem("products")) || [
+function safeGetLocalStorage(key, defaultValue) {
+    try {
+        let val = localStorage.getItem(key);
+        return val ? JSON.parse(val) : defaultValue;
+    } catch (e) {
+        console.error("LocalStorage read failed", e);
+        return defaultValue;
+    }
+}
+
+function safeSetLocalStorage(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+        console.error("LocalStorage write failed", e);
+        if (typeof showNotification === "function") {
+            showNotification("Unable to save data. Storage might be full or disabled.", "Storage Error", "error");
+        }
+    }
+}
+
+let products = safeGetLocalStorage("products", null) || [
 
 {
 id:1,
@@ -40,13 +61,11 @@ description:"Elegant earrings"
 // CART
 // =========================
 
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = safeGetLocalStorage("cart", []);
 
-let wishlist =
-JSON.parse(localStorage.getItem("wishlist")) || [];
+let wishlist = safeGetLocalStorage("wishlist", []);
 
-let orders =
-JSON.parse(localStorage.getItem("orders")) || [];
+let orders = safeGetLocalStorage("orders", []);
 
 let discount = 0;
 
@@ -55,39 +74,19 @@ let discount = 0;
 // =========================
 
 function saveProducts(){
-
-localStorage.setItem(
-"products",
-JSON.stringify(products)
-);
-
+    safeSetLocalStorage("products", products);
 }
 
 function saveCart(){
-
-localStorage.setItem(
-"cart",
-JSON.stringify(cart)
-);
-
+    safeSetLocalStorage("cart", cart);
 }
 
 function saveWishlist(){
-
-localStorage.setItem(
-"wishlist",
-JSON.stringify(wishlist)
-);
-
+    safeSetLocalStorage("wishlist", wishlist);
 }
 
 function saveOrders(){
-
-localStorage.setItem(
-"orders",
-JSON.stringify(orders)
-);
-
+    safeSetLocalStorage("orders", orders);
 }
 
 // =========================
@@ -107,28 +106,41 @@ let filtered = products.filter(p => {
     return matchCat && matchSearch;
 });
 
-filtered.forEach(product => {
-
-grid.innerHTML += `
+let htmlString = filtered.map(product => `
 <div class="product-card">
 <div class="product-img-wrapper">
-<img src="${product.image}" onclick="openProductModal(${product.id})" style="cursor:pointer;">
+<img 
+    src="${product.image}" 
+    alt="${product.name}" 
+    width="400" 
+    height="350" 
+    loading="lazy"
+    tabindex="0"
+    onclick="openProductModal(${product.id})" 
+    onkeydown="if(event.key==='Enter') openProductModal(${product.id})"
+    style="cursor:pointer;">
 </div>
 <div class="product-info">
-<h3 class="product-name" onclick="openProductModal(${product.id})" style="cursor:pointer;">
+<h3 
+    class="product-name" 
+    tabindex="0"
+    onclick="openProductModal(${product.id})" 
+    onkeydown="if(event.key==='Enter') openProductModal(${product.id})"
+    style="cursor:pointer;">
 ${product.name}
 </h3>
 <div class="product-price">
 ₦${product.price.toLocaleString()}
 </div>
 <div class="product-buttons">
-<button class="add-cart" onclick="addToCart(${product.id})">ADD TO BAG</button>
-<button class="wishlist-btn" onclick="addToWishlist(${product.id})"><i class="ph ph-heart"></i></button>
+<button class="add-cart" aria-label="Add ${product.name} to bag" onclick="addToCart(${product.id})">ADD TO BAG</button>
+<button class="wishlist-btn" aria-label="Add ${product.name} to wishlist" onclick="addToWishlist(${product.id})"><i class="ph ph-heart"></i></button>
 </div>
 </div>
 </div>
-`;
-});
+`).join('');
+
+grid.innerHTML = htmlString;
 }
 
 // =========================
