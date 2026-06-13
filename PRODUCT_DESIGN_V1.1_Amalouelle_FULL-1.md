@@ -158,7 +158,7 @@ Supports:
 
 Coupon Example:
 
-LUXE10
+AMALOUELLE10
 
 ---
 
