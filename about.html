@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-<title>Shop - Amalouelle Jewelry</title>
+<title>About - Amalouelle Jewelry</title>
 <meta name="description" content="Discover handcrafted luxury jewelry and accessories at Amalouelle. Elegance that shines forever.">
 <meta property="og:title" content="Amalouelle Jewelry">
 <meta property="og:description" content="Discover handcrafted luxury jewelry and accessories.">
@@ -83,145 +83,34 @@ placeholder="Search products">
 
 </header>
 
-<!-- HERO AND FEATURES REMOVED FOR SHOP PAGE -->
-
-<!-- PRODUCTS -->
-
-<section id="products">
-
-<h2>
-Shop Our Collection
-</h2>
-
-<div class="category-filters">
-<button class="filter-btn active" onclick="filterCategory(event, 'All')">All</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Necklaces')">Necklaces</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Earrings')">Earrings</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Bracelets')">Bracelets</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Rings')">Rings</button>
-</div>
-
-<div id="product-grid">
-
-<!-- JS WILL LOAD PRODUCTS -->
-
-</div>
+<!-- FULL COVER OWNER SECTION -->
+<section class="owner-cover-section" style="position: relative; width: 100%; min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 120px 8%; background: url('assets/owner.jpeg') center/cover no-repeat; background-attachment: fixed;">
+    
+    <!-- Dark overlay for text readability -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 1;"></div>
+    
+    <div class="owner-text-wrapper" style="position: relative; z-index: 2; max-width: 900px; text-align: center;">
+        <p style="color: #d4af37; letter-spacing: 3px; font-weight: 600; font-size: 14px; margin-bottom: 15px; text-transform: uppercase;">Our Story</p>
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 60px; color: #d4af37; margin-bottom: 30px; letter-spacing: 1px;">Meet The Founder</h1>
+        
+        <p style="color: #fff; font-size: 18px; line-height: 1.9; margin-bottom: 25px;">
+            Amalouelle Jewelry was born out of a profound passion for preserving life’s most precious moments through the art of fine craftsmanship. I have always believed that jewelry is far more than an accessory—it is an intimate reflection of one's journey, a whispered story of love, triumph, and legacy that spans generations. My mission from day one has been to create timeless masterpieces that do not just sparkle on the surface, but carry a deeper emotional resonance.
+        </p>
+        <p style="color: #fff; font-size: 18px; line-height: 1.9; margin-bottom: 25px;">
+            True luxury lies in the uncompromising dedication to detail. At Amalouelle, every single gemstone is meticulously hand-selected for its unrivaled brilliance, clarity, and ethical origins. We collaborate exclusively with master artisans who have spent decades perfecting their craft, ensuring that every curve, every setting, and every polish is executed with absolute precision. We refuse to cut corners, because we know that the pieces we create today will become the cherished heirlooms of tomorrow.
+        </p>
+        <p style="color: #fff; font-size: 18px; line-height: 1.9; margin-bottom: 40px;">
+            When you wear a piece from Amalouelle, you are not merely wearing gold or diamonds; you are wearing a piece of our history, forged in tradition and designed for eternity. Thank you for allowing us to be a part of your story. I invite you to explore our carefully curated collections and discover the elegance that shines forever.
+        </p>
+        
+        <button class="gold-btn" onclick="window.location.href='shop.html'" style="padding: 15px 45px; font-size: 16px; margin-top: 10px;">
+            EXPLORE OUR COLLECTION
+        </button>
+    </div>
 
 </section>
 
-<!-- CART -->
-
-<div id="cart-sidebar">
-
-<div class="cart-header">
-
-<h3>Your Cart</h3>
-
-<button onclick="toggleCart()">
-<i class="ph ph-x" style="font-size: 20px;"></i>
-</button>
-
-</div>
-
-<div id="cart-items"></div>
-
-<div class="cart-summary">
-
-    <div class="cart-subtotal">
-        <span>Subtotal:</span>
-        <span id="cart-total">₦0</span>
-    </div>
-
-    <div class="coupon-row">
-        <input type="text" id="coupon" placeholder="Discount Code">
-        <button onclick="applyCoupon()">Apply</button>
-    </div>
-
-    <div class="customer-inputs">
-        <input type="email" id="customer-email" placeholder="Email Address">
-        <input type="tel" id="customer-phone" placeholder="Phone (e.g. 080...)">
-    </div>
-
-    <button onclick="payWithPaystack()" class="checkout-btn">
-        Checkout With Paystack
-    </button>
-
-    <button onclick="sendWhatsAppOrder()" class="whatsapp-btn">
-        Order On WhatsApp
-    </button>
-
-</div>
-
-</div>
-
-<!-- WISHLIST -->
-
-<div id="wishlist-sidebar">
-
-<div class="cart-header">
-
-<h3>Wishlist</h3>
-
-<button onclick="toggleWishlist()">
-<i class="ph ph-x" style="font-size: 20px;"></i>
-</button>
-
-</div>
-
-<div id="wishlist-items">
-
-</div>
-
-</div>
-
-<!-- HISTORY MOVED TO ORDERS.HTML -->
-
-<!-- REVIEWS -->
-
-<section class="reviews">
-
-<h2>
-Customer Reviews
-</h2>
-
-<div id="reviews-container">
-
-<div class="review">
-    <div class="review-stars">
-        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-    </div>
-    <p class="review-text">"Amazing quality. The diamond necklace I bought looks absolutely stunning and arrived in perfect condition."</p>
-    <div class="reviewer-info">
-        <div class="reviewer-avatar">S</div>
-        <span class="reviewer-name">Sarah Jenkins</span>
-    </div>
-</div>
-
-<div class="review">
-    <div class="review-stars">
-        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-    </div>
-    <p class="review-text">"Fast delivery and incredible customer service. The packaging alone feels like a luxury experience!"</p>
-    <div class="reviewer-info">
-        <div class="reviewer-avatar">M</div>
-        <span class="reviewer-name">Michael D.</span>
-    </div>
-</div>
-
-<div class="review">
-    <div class="review-stars">
-        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-    </div>
-    <p class="review-text">"Beautiful pieces. I purchased a gold bracelet for my wife's anniversary and she hasn't taken it off since."</p>
-    <div class="reviewer-info">
-        <div class="reviewer-avatar">E</div>
-        <span class="reviewer-name">Emily R.</span>
-    </div>
-</div>
-
-</div>
-
-</section>
+<!-- PRODUCTS AND REVIEWS MOVED -->
 
 <!-- FOOTER -->
 

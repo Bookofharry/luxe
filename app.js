@@ -23,39 +23,41 @@ function safeSetLocalStorage(key, value) {
     }
 }
 
-let products = safeGetLocalStorage("products", null) || [
-
-{
-id:1,
-name:"Diamond Necklace",
-price:75000,
-stock:12,
-category:"Necklaces",
-image:"assets/hero.jpg",
-description:"Luxury handcrafted necklace"
-},
-
-{
-id:2,
-name:"Gold Bracelet",
-price:55000,
-stock:8,
-category:"Bracelets",
-image:"assets/hero.jpg",
-description:"Premium gold bracelet"
-},
-
-{
-id:3,
-name:"Luxury Earrings",
-price:45000,
-stock:15,
-category:"Earrings",
-image:"assets/hero.jpg",
-description:"Elegant earrings"
-}
-
+let defaultProducts = [
+{ id:1, name:"Diamond Necklace", price:75000, stock:12, category:"Necklaces", image:"assets/hero.jpg", description:"Luxury handcrafted necklace", isNew: true },
+{ id:2, name:"Gold Bracelet", price:55000, stock:8, category:"Bracelets", image:"assets/hero.jpg", description:"Premium gold bracelet", isNew: false },
+{ id:3, name:"Luxury Earrings", price:45000, stock:15, category:"Earrings", image:"assets/hero.jpg", description:"Elegant earrings", isNew: true },
+{ id:4, name:"Sapphire Ring", price:90000, stock:5, category:"Rings", image:"assets/hero.jpg", description:"Stunning sapphire ring", isNew: false },
+{ id:5, name:"Pearl Choker", price:60000, stock:10, category:"Necklaces", image:"assets/hero.jpg", description:"Classic pearl choker", isNew: false },
+{ id:6, name:"Silver Bangle", price:30000, stock:20, category:"Bracelets", image:"assets/hero.jpg", description:"Minimalist silver bangle", isNew: false },
+{ id:7, name:"Ruby Studs", price:85000, stock:7, category:"Earrings", image:"assets/hero.jpg", description:"Vibrant ruby stud earrings", isNew: true },
+{ id:8, name:"Emerald Cut Ring", price:120000, stock:3, category:"Rings", image:"assets/hero.jpg", description:"Breathtaking emerald cut ring", isNew: false },
+{ id:9, name:"Gold Chain", price:40000, stock:25, category:"Necklaces", image:"assets/hero.jpg", description:"Everyday gold chain", isNew: false },
+{ id:10, name:"Charm Bracelet", price:35000, stock:14, category:"Bracelets", image:"assets/hero.jpg", description:"Customizable charm bracelet", isNew: true },
+{ id:11, name:"Hoop Earrings", price:25000, stock:30, category:"Earrings", image:"assets/hero.jpg", description:"Classic gold hoops", isNew: false },
+{ id:12, name:"Diamond Band", price:150000, stock:4, category:"Rings", image:"assets/hero.jpg", description:"Eternity diamond band", isNew: false },
+{ id:13, name:"Pendant Necklace", price:50000, stock:11, category:"Necklaces", image:"assets/hero.jpg", description:"Delicate pendant necklace", isNew: false },
+{ id:14, name:"Tennis Bracelet", price:110000, stock:6, category:"Bracelets", image:"assets/hero.jpg", description:"Sparkling diamond tennis bracelet", isNew: true },
+{ id:15, name:"Drop Earrings", price:55000, stock:9, category:"Earrings", image:"assets/hero.jpg", description:"Elegant teardrop earrings", isNew: false },
+{ id:16, name:"Vintage Ring", price:80000, stock:2, category:"Rings", image:"assets/hero.jpg", description:"Antique style gold ring", isNew: false },
+{ id:17, name:"Layered Necklace", price:65000, stock:8, category:"Necklaces", image:"assets/hero.jpg", description:"Modern layered necklace", isNew: false },
+{ id:18, name:"Cuff Bracelet", price:45000, stock:12, category:"Bracelets", image:"assets/hero.jpg", description:"Bold gold cuff bracelet", isNew: false },
+{ id:19, name:"Chandelier Earrings", price:95000, stock:5, category:"Earrings", image:"assets/hero.jpg", description:"Statement chandelier earrings", isNew: true },
+{ id:20, name:"Signet Ring", price:70000, stock:7, category:"Rings", image:"assets/hero.jpg", description:"Engravable gold signet ring", isNew: false }
 ];
+
+let storedProducts = safeGetLocalStorage("products", null);
+if (!storedProducts || storedProducts.length < defaultProducts.length) {
+    products = defaultProducts;
+    // We don't save to localStorage immediately to avoid overwriting admin changes completely,
+    // but we use the default list so they see the 20 items.
+} else {
+    products = storedProducts.map(p => {
+        let def = defaultProducts.find(d => d.id === p.id);
+        if (def && typeof p.isNew === 'undefined') p.isNew = def.isNew;
+        return p;
+    });
+}
 
 // =========================
 // CART
@@ -95,20 +97,24 @@ function saveOrders(){
 
 function renderProducts(category = 'All', searchQuery = ''){
 
-let grid = document.getElementById("product-grid");
+let grid = document.getElementById("product-grid") || document.getElementById("new-arrivals-grid");
 if(!grid) return;
+
+let isNewArrivalsPage = grid.id === "new-arrivals-grid";
 
 grid.innerHTML = "";
 
 let filtered = products.filter(p => {
     let matchCat = category === 'All' || p.category === category;
     let matchSearch = p.name.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchCat && matchSearch;
+    let matchNew = !isNewArrivalsPage || p.isNew === true;
+    return matchCat && matchSearch && matchNew;
 });
 
 let htmlString = filtered.map(product => `
 <div class="product-card">
 <div class="product-img-wrapper">
+${product.isNew ? '<span class="badge-new">NEW</span>' : ''}
 <img 
     src="${product.image}" 
     alt="${product.name}" 

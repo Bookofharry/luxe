@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-<title>Shop - Amalouelle Jewelry</title>
+<title>Contact - Amalouelle Jewelry</title>
 <meta name="description" content="Discover handcrafted luxury jewelry and accessories at Amalouelle. Elegance that shines forever.">
 <meta property="og:title" content="Amalouelle Jewelry">
 <meta property="og:description" content="Discover handcrafted luxury jewelry and accessories.">
@@ -83,145 +83,21 @@ placeholder="Search products">
 
 </header>
 
-<!-- HERO AND FEATURES REMOVED FOR SHOP PAGE -->
-
-<!-- PRODUCTS -->
-
-<section id="products">
-
-<h2>
-Shop Our Collection
-</h2>
-
-<div class="category-filters">
-<button class="filter-btn active" onclick="filterCategory(event, 'All')">All</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Necklaces')">Necklaces</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Earrings')">Earrings</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Bracelets')">Bracelets</button>
-<button class="filter-btn" onclick="filterCategory(event, 'Rings')">Rings</button>
-</div>
-
-<div id="product-grid">
-
-<!-- JS WILL LOAD PRODUCTS -->
-
-</div>
-
+<!-- CONTACT SECTION -->
+<section style="padding: 150px 8% 100px; text-align:center; min-height: 80vh;">
+    <h1 style="color:#d4af37; font-family:'Cormorant Garamond',serif; font-size: 50px; margin-bottom: 20px;">Contact Us</h1>
+    <p style="color:#ccc; margin-bottom: 40px; font-size: 16px;">We'd love to hear from you. Reach out to us via email or WhatsApp.</p>
+    <div style="max-width: 600px; margin: 0 auto; background: #151515; padding: 40px; border-radius: 8px; border-top: 4px solid #d4af37;">
+        <input type="text" placeholder="Your Name" style="width: 100%; padding: 15px; margin-bottom: 20px; background: #0b0b0b; border: 1px solid #333; color: white;">
+        <input type="email" placeholder="Your Email" style="width: 100%; padding: 15px; margin-bottom: 20px; background: #0b0b0b; border: 1px solid #333; color: white;">
+        <textarea placeholder="Your Message" style="width: 100%; padding: 15px; margin-bottom: 20px; background: #0b0b0b; border: 1px solid #333; color: white; height: 150px;"></textarea>
+        <button class="gold-btn" style="width: 100%; padding: 15px;" onclick="showNotification('Thank you for reaching out! We will get back to you shortly.', 'Message Sent', 'success')">Send Message</button>
+    </div>
 </section>
-
-<!-- CART -->
-
-<div id="cart-sidebar">
-
-<div class="cart-header">
-
-<h3>Your Cart</h3>
-
-<button onclick="toggleCart()">
-<i class="ph ph-x" style="font-size: 20px;"></i>
-</button>
-
-</div>
-
-<div id="cart-items"></div>
-
-<div class="cart-summary">
-
-    <div class="cart-subtotal">
-        <span>Subtotal:</span>
-        <span id="cart-total">₦0</span>
-    </div>
-
-    <div class="coupon-row">
-        <input type="text" id="coupon" placeholder="Discount Code">
-        <button onclick="applyCoupon()">Apply</button>
-    </div>
-
-    <div class="customer-inputs">
-        <input type="email" id="customer-email" placeholder="Email Address">
-        <input type="tel" id="customer-phone" placeholder="Phone (e.g. 080...)">
-    </div>
-
-    <button onclick="payWithPaystack()" class="checkout-btn">
-        Checkout With Paystack
-    </button>
-
-    <button onclick="sendWhatsAppOrder()" class="whatsapp-btn">
-        Order On WhatsApp
-    </button>
-
-</div>
-
-</div>
-
-<!-- WISHLIST -->
-
-<div id="wishlist-sidebar">
-
-<div class="cart-header">
-
-<h3>Wishlist</h3>
-
-<button onclick="toggleWishlist()">
-<i class="ph ph-x" style="font-size: 20px;"></i>
-</button>
-
-</div>
-
-<div id="wishlist-items">
-
-</div>
-
-</div>
 
 <!-- HISTORY MOVED TO ORDERS.HTML -->
 
-<!-- REVIEWS -->
-
-<section class="reviews">
-
-<h2>
-Customer Reviews
-</h2>
-
-<div id="reviews-container">
-
-<div class="review">
-    <div class="review-stars">
-        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-    </div>
-    <p class="review-text">"Amazing quality. The diamond necklace I bought looks absolutely stunning and arrived in perfect condition."</p>
-    <div class="reviewer-info">
-        <div class="reviewer-avatar">S</div>
-        <span class="reviewer-name">Sarah Jenkins</span>
-    </div>
-</div>
-
-<div class="review">
-    <div class="review-stars">
-        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-    </div>
-    <p class="review-text">"Fast delivery and incredible customer service. The packaging alone feels like a luxury experience!"</p>
-    <div class="reviewer-info">
-        <div class="reviewer-avatar">M</div>
-        <span class="reviewer-name">Michael D.</span>
-    </div>
-</div>
-
-<div class="review">
-    <div class="review-stars">
-        <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i>
-    </div>
-    <p class="review-text">"Beautiful pieces. I purchased a gold bracelet for my wife's anniversary and she hasn't taken it off since."</p>
-    <div class="reviewer-info">
-        <div class="reviewer-avatar">E</div>
-        <span class="reviewer-name">Emily R.</span>
-    </div>
-</div>
-
-</div>
-
-</section>
+<!-- REVIEWS REMOVED -->
 
 <!-- FOOTER -->
 
