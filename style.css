@@ -13,6 +13,8 @@ font-family:'Poppins',sans-serif;
 background:#0b0b0b;
 color:#fff;
 overflow-x:hidden;
+width: 100vw;
+max-width: 100%;
 }
 
 /* TOP BAR */
@@ -895,6 +897,11 @@ nav{
 position: relative;
 padding: 0;
 height: 60px;
+}
+
+/* Prevent input zoom on mobile */
+input, textarea, select {
+    font-size: 16px !important;
 }
 
 header{
