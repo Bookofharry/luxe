@@ -175,14 +175,16 @@ function decreaseQtyInput(id) {
 // =========================
 
 function toggleMenu() {
-    let menu = document.getElementById("nav-menu");
+    let menu = document.getElementById("mobile-sidebar");
     if(menu) menu.classList.toggle("active");
+    updateOverlay();
 }
 
 function toggleCart() {
     let sidebar = document.getElementById("cart-sidebar");
-    sidebar.classList.toggle("active");
-    if(sidebar.classList.contains("active")) renderCart();
+    if (sidebar) sidebar.classList.toggle("active");
+    if (sidebar && sidebar.classList.contains("active")) renderCart();
+    updateOverlay();
 }
 
 function addToCart(id) {
@@ -301,8 +303,9 @@ function updateCartCount() {
 
 function toggleWishlist() {
     let sidebar = document.getElementById("wishlist-sidebar");
-    sidebar.classList.toggle("active");
-    if(sidebar.classList.contains("active")) renderWishlist();
+    if (sidebar) sidebar.classList.toggle("active");
+    if (sidebar && sidebar.classList.contains("active")) renderWishlist();
+    updateOverlay();
 }
 
 function addToWishlist(id) {
@@ -456,3 +459,24 @@ document.addEventListener("DOMContentLoaded", () => {
     renderProducts();
     updateCartCount();
 });
+function closeAllSidebars() {
+    let mobile = document.getElementById("mobile-sidebar");
+    let cart = document.getElementById("cart-sidebar");
+    let wish = document.getElementById("wishlist-sidebar");
+    if (mobile) mobile.classList.remove("active");
+    if (cart) cart.classList.remove("active");
+    if (wish) wish.classList.remove("active");
+    updateOverlay();
+}
+
+function updateOverlay() {
+    let overlay = document.getElementById("sidebar-overlay");
+    if (!overlay) return;
+    const isAnyActive = document.querySelector('#mobile-sidebar.active, #cart-sidebar.active, #wishlist-sidebar.active');
+    if (isAnyActive) {
+        overlay.classList.add("active");
+    } else {
+        overlay.classList.remove("active");
+    }
+}
+

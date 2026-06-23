@@ -192,5 +192,27 @@ input, select, textarea { width:100%; padding:10px; margin-bottom:15px; backgrou
     document.addEventListener("DOMContentLoaded", renderDashboard);
 
 </script>
+
+<!-- SIDEBAR OVERLAY -->
+<div id="sidebar-overlay" onclick="closeAllSidebars()"></div>
+
+<!-- MOBILE SIDEBAR -->
+<div id="mobile-sidebar" class="sidebar">
+    <div class="cart-header">
+        <h3 style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--color-brown); margin:0;">Menu</h3>
+        <button onclick="toggleMenu()">
+            <i class="ph ph-x" style="font-size: 20px;"></i>
+        </button>
+    </div>
+    <div class="mobile-nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="new-arrivals.html">New Arrivals</a>
+        <a href="orders.html">Orders</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</div>
+
 </body>
 </html>
