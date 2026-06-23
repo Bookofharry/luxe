@@ -207,6 +207,8 @@ function addToCart(id) {
     
     let el = document.getElementById(`qty-${id}`);
     if(el) el.innerText = "1";
+    
+    showQuickModal(product.name);
 }
 
 function removeFromCart(id) {
@@ -365,6 +367,15 @@ function openProductModal(id) {
 
 function closeProductModal() {
     document.getElementById("product-modal").classList.remove("active");
+}
+
+function showQuickModal(productName) {
+    document.getElementById("quick-modal-name").innerText = productName;
+    let modal = document.getElementById("quick-modal");
+    modal.classList.add("active");
+    setTimeout(() => {
+        modal.classList.remove("active");
+    }, 1500);
 }
 
 function showNotification(message, title = "Notice", type = "info") {
